@@ -1,4 +1,4 @@
-export interface Record {
+export interface IRecord {
   id: number;
   created_at: Date;
   title: string;
@@ -26,3 +26,8 @@ export interface IFilter {
   comparison: comparison;
   value: string;
 }
+
+export interface IInitialState {
+  table:IRecord[]
+}
+

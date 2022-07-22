@@ -1,4 +1,4 @@
-import { comparison, IFilter } from "../models/models";
+import { IFilter, IRecord } from "../models/models";
 import { supabase } from "./supabaseClient";
 
 export async function getTable() {
@@ -8,25 +8,16 @@ export async function getTable() {
 }
 
 export async function getFilteredTable(filter: IFilter) {
-    let { data, error } = await supabase
-      .from("spa")
-      .select("*")
-      [filter.comparison](filter.property, filter.value);
-    if (error) throw error;
-    return data;
-  }
+  let { data, error } = await supabase
+    .from("spa")
+    .select("*")
+    [filter.comparison](filter.property, filter.value);
+  if (error) throw error;
+  return data;
+}
 
-  //     switch (filter.comparison) {
-
-  //     case comparison.eq:
-  //       let { data, error } = await supabase
-  //         .from("spa")
-  //         .select("*")
-  //         .eq(filter.property, filter.value);
-  //       if (error) throw error;
-  //       return data;
-
-  //     default:
-  //       break;
-  //   }
-
+export async function insertRows(rows: IRecord[]) {
+  const { data, error } = await supabase.from("spa").insert(rows);
+  if (error) throw error;
+  return data;
+}
