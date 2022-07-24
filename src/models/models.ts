@@ -1,12 +1,12 @@
 export interface IRecord {
   id: number;
-  created_at: Date;
+  created_at: string;
   title: string;
   quantity: number;
   distance: number;
 }
 
-export enum columns {
+export enum Columns {
   id = "id",
   created_at = "created_at",
   title = "title",
@@ -14,7 +14,7 @@ export enum columns {
   distance = "distance",
 }
 
-export enum comparison {
+export enum Comparison {
   eq = "eq",
   gt = "gt",
   lt = "lt",
@@ -22,12 +22,29 @@ export enum comparison {
 }
 
 export interface IFilter {
-  property: columns;
-  comparison: comparison;
+  property: Columns;
+  comparison: Comparison;
   value: string;
 }
 
 export interface IInitialState {
-  table:IRecord[]
+  table: IRecord[];
+  filter: IFilter;
+  loading: boolean;
+  errorLoading: boolean;
+  sort: SortOptions;
+  sortDirection: boolean;
+  currentPage:number
+}
+
+export enum SortOptions {
+  title = "title",
+  quantity = "quantity",
+  distance = "distance",
+}
+
+export interface IThunkProp {
+  filter: IFilter;
+  page: number;
 }
 

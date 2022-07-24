@@ -1,5 +1,5 @@
 import { getFilteredTable, getTable } from ".";
-import { columns, comparison } from "../models/models";
+import { Columns, Comparison } from "../models/models";
 
 describe('test api', () => {
 
@@ -17,8 +17,8 @@ describe("test quantity property", () => {
   it("test equal filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.quantity,
-      comparison: comparison.eq,
+      property: Columns.quantity,
+      comparison: Comparison.eq,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -30,8 +30,8 @@ describe("test quantity property", () => {
   it("test greeter then filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.quantity,
-      comparison: comparison.gt,
+      property: Columns.quantity,
+      comparison: Comparison.gt,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -43,8 +43,8 @@ describe("test quantity property", () => {
   it("test less then filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.quantity,
-      comparison: comparison.lt,
+      property: Columns.quantity,
+      comparison: Comparison.lt,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -62,8 +62,8 @@ describe("test distance property", () => {
   it("test equal filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.distance,
-      comparison: comparison.eq,
+      property: Columns.distance,
+      comparison: Comparison.eq,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -75,8 +75,8 @@ describe("test distance property", () => {
   it("test greeter then filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.distance,
-      comparison: comparison.gt,
+      property: Columns.distance,
+      comparison: Comparison.gt,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -88,8 +88,8 @@ describe("test distance property", () => {
   it("test less then filter", async () => {
     const testNumber = 1;
     const res = await getFilteredTable({
-      property: columns.distance,
-      comparison: comparison.lt,
+      property: Columns.distance,
+      comparison: Comparison.lt,
       value: String(testNumber),
     });
     expect(res).not.toBeNull();
@@ -106,8 +106,8 @@ describe("test title property", () => {
   it("test equal filter", async () => {
     const testTitle = "title1";
     const res = await getFilteredTable({
-      property: columns.title,
-      comparison: comparison.eq,
+      property: Columns.title,
+      comparison: Comparison.eq,
       value: String(testTitle),
     });
     expect(res).not.toBeNull();
@@ -119,8 +119,8 @@ describe("test title property", () => {
   it("test like filter", async () => {
     const testTitle = "title";
     const res = await getFilteredTable({
-      property: columns.title,
-      comparison: comparison.like,
+      property: Columns.title,
+      comparison: Comparison.like,
       value: String("%"+testTitle+"%"),
     });
     expect(res).not.toBeNull();
